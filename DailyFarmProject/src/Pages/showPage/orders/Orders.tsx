@@ -5,7 +5,9 @@ const Orders = () => {
 
         <div className="p-2">
             <h2 className={"text-2xl"}>Orders</h2>
-            <Cards type={"recCards"}/>
+
+
+            <Cards type={"recCards"} swap={false}/>
         </div>
     );
 };

@@ -1,39 +1,60 @@
 import {CardsSliceType} from "../../features/cardsSlice/CardsSlice.tsx";
 import {useAppSelector} from "../../app/hooks.ts";
+import CardsForm from "./CardsForm.tsx";
+import {useState} from "react";
+import {motion} from "framer-motion";
+import {useSwipeable} from 'react-swipeable';
+import {animationsProps} from "../../features/const.ts";
 
-interface Props{
-    type:keyof CardsSliceType,
+interface Props {
+    type: keyof CardsSliceType,
+    swap: boolean
 }
+const Cards = ({type, swap}: Props) => {
 
-const Cards = ({type}:Props) => {
+    const cards = useAppSelector(state => state.cards[type]);
+    const [elementCount, setElementCount] = useState<number>(0);
+    const [animationsType, setAnimationType] = useState<'init' | 'left' | 'right'>("init")
 
-      const cards=useAppSelector(state => state.cards[type]);
+    const moveRight = () => {
+        if (cards.length - 1 === elementCount) {
+            setElementCount(0);
+        } else setElementCount(prev => prev + 1);
+        setAnimationType('right')
+    }
 
-      return(
-          <div>
-              {cards.map(card=>{
-                  return (
-                      <div key={card.name}
-                           className="relative h-50 object-cover border border-gray-400 rounded overflow-hidden shadow-lg mb-4 z-10 ">
-                          <div className={"absolute w-full h-full p-4 "}>
-                              <h2 className={"text-end text-3xl text-[#501414] "}>{card.saleValue}</h2>
-                          </div>
-                          <img src={card.src} alt={card.name} className="w-full h-full object-cover"/>
+    const moveLeft = () => {
+        if (elementCount === 0) {
+            setElementCount(cards.length - 1);
+        } else setElementCount(prev => prev - 1);
+        setAnimationType('left')
 
-                          <div className="absolute top-0 right-0 bottom-0 left-0 flex items-end">
-                              <div className={"bg-white opacity-80 w-full pb-2 ps-2"}>
-                                  <h2>{card.name}</h2>
-                                  <h2>{card.description}</h2>
-                              </div>
-                          </div>
-
-                      </div>
-                  )
-                  }
-              )}
-          </div>
-      )
-
+    }
+    const swipeHandlers = useSwipeable({
+        onSwipedLeft: () => moveRight(),
+        onSwipedRight: () => moveLeft(),
+        preventScrollOnSwipe: true,
+        trackMouse: true,
+    })
+    if (!swap) {
+        return (
+            <>{cards.map(card => {
+                    return <div key={card.name}><CardsForm card={card}/></div>})}
+            </>)
+    } else {
+        return (
+            <motion.div
+                key={elementCount}
+                initial={animationsProps[animationsType].initial}
+                animate={animationsProps[animationsType].animate}
+                transition={{type: 'spring', stiffness: 250, damping: 30}}
+            >
+                <div {...swipeHandlers}>
+                    <CardsForm card={cards[elementCount]}></CardsForm>
+                </div>
+            </motion.div>
+        )
+    }
 };
 
 export default Cards;

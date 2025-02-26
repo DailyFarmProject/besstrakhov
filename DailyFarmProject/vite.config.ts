@@ -5,8 +5,13 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server:{
+    host: '127.0.0.1',
+    port: 8000,
+  },
+
   plugins: [react(),
-    tailwindcss(),
+      tailwindcss(),
     VitePWA({
     registerType: 'autoUpdate',
     injectRegister: false,

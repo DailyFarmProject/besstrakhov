@@ -1,23 +1,32 @@
-import Cards from "../../../Widjests/cards/Cards.tsx";
+import MainSearch from "./mainsearch/MainSearch.tsx";
+import ProductList from "./productList/ProductList.tsx";
+
+import {Link, useParams} from "react-router-dom";
+import {searchIcon} from "../../../features/icons/icons.tsx";
+import {useState} from "react";
+
 
 const Search = () => {
-    return (
-        <div className="p-2">
-            <h3 className={"text-2xl text-gray-500 border-b pb-1 mt-2"}>For you</h3>
-            <div className="mt-5">
-                <Cards type={"recCards"}/>
-            </div>
+     const {list}=useParams();
+     const [searchName, setSearchName] = useState("");
 
-            <h3 className={"text-2xl text-gray-500 border-b pb-1 mt-2"}>Best praise</h3>
-            <div className="mt-5">
-                <Cards type={"saleCards"}/>
-            </div>
+     return (
+         <div className="p-2">
+              <div className={"flex flex-row border-2 border-gray-400 mt-1 p-1 rounded-lg align-center"}>
+                  <Link to={`/search/${searchName}`} className={"mt-[0.1rem]"}>{searchIcon("size-5")}</Link>
+                  <input type={"text"} placeholder={"Search..."}
+                         onChange={(e) => setSearchName(e.target.value)}
+                         className={"w-full mx-2 focus:outline-none"}/>
+              </div>
+             <div>
+                 {list?.length?<ProductList/>:<MainSearch/>}
+             </div>
+
+         </div>
+
+)
 
 
-        </div>
-
-
-    );
 };
 
 export default Search;

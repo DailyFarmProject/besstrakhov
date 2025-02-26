@@ -1,5 +1,20 @@
 import {cadsType} from "../types";
 
+export const animationsProps = {
+    'init': {
+        initial: {x: 0},
+        animate: {x: 0},
+    },
+    'left': {
+        initial: {x: '-100%'},
+        animate: {x: 0},
+    },
+    "right": {
+        initial: {x: '100%'},
+        animate: {x: 0},
+    }
+}
+
 export const recCards:cadsType[]= [
     {
         name: "name 1",

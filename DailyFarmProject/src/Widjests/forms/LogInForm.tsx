@@ -1,5 +1,6 @@
 import {useAppDispatch} from "../../app/hooks.ts";
-import {setPage} from "../../features/render/globalRenderSlice.ts";
+import {setToken} from "../../features/user/userSlice.ts";
+
 
 
 
@@ -7,7 +8,7 @@ const LogInForm = () => {
     const dispatch = useAppDispatch();
 
     const handleClick=()=>{
-       setTimeout(()=>dispatch(setPage("showPage")),150)
+       setTimeout(()=>dispatch(setToken(true)),150)
     }
 
 

@@ -1,10 +1,10 @@
 import {configureStore} from "@reduxjs/toolkit";
-import render from "../features/render/globalRenderSlice.ts";
 import cards from "../features/cardsSlice/CardsSlice.tsx";
+import user from "../features/user/userSlice.ts";
 
 export const store = configureStore({
     reducer: {
-        render,cards
+        user,cards
     },
 })
 

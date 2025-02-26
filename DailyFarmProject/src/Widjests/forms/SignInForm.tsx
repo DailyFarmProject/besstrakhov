@@ -1,7 +1,7 @@
 import {useState} from "react";
 import {chevronLeftIcon, chevronRightIcon} from "../../features/icons/icons.tsx";
 import {motion} from "framer-motion";
-import {setPage} from "../../features/render/globalRenderSlice.ts";
+import {setToken} from "../../features/user/userSlice.ts";
 import {useAppDispatch} from "../../app/hooks.ts";
 const SignInForm = () => {
 
@@ -35,7 +35,7 @@ const SignInForm = () => {
   }
 
     const handleClick=()=>{
-        setTimeout(()=>dispatch(setPage("showPage")),150)
+        setTimeout(()=>dispatch(setToken(true)),150)
     }
 
 

@@ -1,33 +1,41 @@
-import Search from "./search/Search.tsx";
+import Footer from "./Footer.tsx";
 import Orders from "./orders/Orders.tsx";
 import Favorite from "./favorite/Favorite.tsx";
 import Account from "./account/Account.tsx";
-import {useState} from "react";
-import Footer from "./Footer.tsx";
+import Search from "./search/Search.tsx";
+import {useNavigate, useParams} from "react-router-dom";
+import {useEffect} from "react";
 
 const ShowPage = () => {
-    const [page, setPage] = useState("");
+    const {page}=useParams();
+    const navigate = useNavigate();
+    useEffect(() => {
+        if(page==="search")
+        navigate("/search");
+    },[])
+
+    console.log(page);
     const renderPage = (page: string) => {
         switch (page) {
-            case "search":
-                return <Search/>
             case "orders":
-                return <Orders/>
+                return <Orders/>;
             case "favorite":
-                return <Favorite/>
+                return <Favorite/>;
             case "account":
-                return <Account/>
+              return <Account/>
+            case "search":
+                return <Search/>;
             default:
                 return <Search/>
         }
     }
     return (
         <div className="flex min-h-screen flex-col">
-            <h1 className={"text-purple-400 text-3xl text-center"}>To Go To Eat</h1>
-            <div className="grow">
-                {renderPage(page)}
+            <div className="flex-grow">
+            {renderPage(page!)}
             </div>
-            <Footer setPage={setPage}/>
+
+            <Footer/>
 
         </div>
     );
