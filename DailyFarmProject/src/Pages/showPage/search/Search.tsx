@@ -12,11 +12,11 @@ const Search = () => {
 
      return (
          <div className="p-2">
-              <div className={"flex flex-row border-2 border-gray-400 mt-1 p-1 rounded-lg align-center"}>
+              <div className={"flex flex-row border-sighInForm border-gray-400 mt-1 p-1 rounded-lg align-center"}>
                   <Link to={`/search/${searchName}`} className={"mt-[0.1rem]"}>{searchIcon("size-5")}</Link>
                   <input type={"text"} placeholder={"Search..."}
                          onChange={(e) => setSearchName(e.target.value)}
-                         className={"w-full mx-2 focus:outline-none"}/>
+                         className={"w-full mx-sighInForm focus:outline-none"}/>
               </div>
              <div>
                  {list?.length?<ProductList/>:<MainSearch/>}

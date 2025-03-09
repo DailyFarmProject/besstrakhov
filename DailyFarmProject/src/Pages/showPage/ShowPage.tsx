@@ -10,11 +10,16 @@ const ShowPage = () => {
     const {page}=useParams();
     const navigate = useNavigate();
     useEffect(() => {
-        if(page==="search")
-        navigate("/search");
+        if(page==="accounting") {
+            navigate(`/search`);
+        }
+        return () => {
+            console.log("unmount");
+            navigate(`/accounting`);
+
+        }
     },[])
 
-    console.log(page);
     const renderPage = (page: string) => {
         switch (page) {
             case "orders":

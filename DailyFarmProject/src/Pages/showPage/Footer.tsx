@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="flex flex-row justify-around border-t-2 border-gray-200 pb-2 pt-3 fixed w-full bottom-0 z-10 bg-amber-50 opacity-80">
             {icons.map((icon,i) => (
                 <Link key={i} to={pathValue[i]}>
-                <div key={i} className={"p-2"}>
+                <div key={i} className={"p-sighInForm"}>
                     {icon}
                 </div>
                 </Link>

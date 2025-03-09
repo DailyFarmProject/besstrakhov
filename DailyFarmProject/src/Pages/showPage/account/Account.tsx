@@ -1,4 +1,4 @@
-import LogOut from "../../../Widjests/logOut/LogOut.tsx";
+import LogOut from "../../../Widjests/LogOut.tsx";
 import {Link} from "react-router-dom";
 const Account = () => {
 

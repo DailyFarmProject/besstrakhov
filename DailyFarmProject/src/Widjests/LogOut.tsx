@@ -1,5 +1,5 @@
-import {useAppDispatch} from "../../app/hooks.ts";
-import {setToken} from "../../features/user/userSlice.ts";
+import {useAppDispatch} from "../app/hooks.ts";
+import {setToken} from "../features/user/userSlice.ts";
 
 
 const LogOut = () => {

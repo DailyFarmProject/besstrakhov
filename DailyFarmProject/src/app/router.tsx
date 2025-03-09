@@ -2,7 +2,6 @@ import {createBrowserRouter, Navigate} from "react-router-dom";
 import ShowPage from "../Pages/showPage/ShowPage.tsx";
 
 
-
 export const router = createBrowserRouter([
     {
         path: "/",

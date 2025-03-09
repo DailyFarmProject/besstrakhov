@@ -1,4 +1,4 @@
-import LogInForm from "../../../Widjests/forms/LogInForm.tsx";
+import LogInForm from "../../../Widjests/logInForm/LogInForm.tsx";
 
 interface Props {
     setPage: (page: string) => void;
@@ -10,7 +10,7 @@ const LogIn = ({setPage}:Props) => {
             <div className={"m-auto w-[80%] mt-[20vh]"}>
             <LogInForm/>
             </div>
-            <p className={"text-center mt-2"}>
+            <p className={"text-center mt-sighInForm"}>
             if you don't sing in,you may{'\u00A0'}
             <span className={"text-blue-400 cursor-pointer"}
                   onClick={() => {

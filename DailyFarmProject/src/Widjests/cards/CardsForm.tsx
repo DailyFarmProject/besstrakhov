@@ -15,7 +15,7 @@ const CardsForm = ({card}:Props) => {
             <img src={card.src} alt={card.name} className="w-full h-full object-cover"/>
 
             <div className="absolute top-0 right-0 bottom-0 left-0 flex items-end">
-                <div className={"bg-white opacity-80 w-full pb-2 ps-2"}>
+                <div className={"bg-white opacity-80 w-full pb-sighInForm ps-sighInForm"}>
                     <h2>{card.name}</h2>
                     <h2>{card.description}</h2>
                 </div>

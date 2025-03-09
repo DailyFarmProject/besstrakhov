@@ -1,4 +1,5 @@
 import {cadsType} from "../types";
+import {easeIn} from "framer-motion";
 
 export const animationsProps = {
     'init': {
@@ -12,8 +13,29 @@ export const animationsProps = {
     "right": {
         initial: {x: '100%'},
         animate: {x: 0},
+    },
+    "opacity": {
+        initial: {y: -30,opacity: 0},
+        animate: {y: 0,opacity: 1},
+        transaction:{duration: 1.1,ease:easeIn},
+
     }
 }
+
+
+export const initData = {
+    country: "",
+    email: "",
+    password: "",
+    phone: "",
+    "coordinates": {
+        "latitude": "",
+        "longitude": "",
+    }
+}
+
+
+
 
 export const recCards:cadsType[]= [
     {
