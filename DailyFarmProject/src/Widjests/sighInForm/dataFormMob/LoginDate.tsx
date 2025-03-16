@@ -9,6 +9,7 @@ import { checkLenght, checkMail} from "../../../features/checkFunction.ts";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
+
 interface errorType {
     message: string;
     status: number;
@@ -75,7 +76,7 @@ const LoginDate = ({chevronClick, isFarmer}: signInProps) => {
             <PhoneInput
             country={'il'}
             value={dataReg.phone}
-            onChange={()=>handleChange}
+            onChange={(phone)=>setDataReg({...dataReg, phone: phone})}
             onlyCountries={['il','fr']}
             />
             <button className={"loginButton"} onClick={handleClick}>Send</button>

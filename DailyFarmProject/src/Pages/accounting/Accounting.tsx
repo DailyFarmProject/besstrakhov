@@ -47,8 +47,8 @@ const Accounting = () => {
         }
     }
     return (
-        <div>
-            <button onClick={button}>push</button>
+        <div className="w-2/3 m-auto ">
+
             {render(page)}
         </div>
     );

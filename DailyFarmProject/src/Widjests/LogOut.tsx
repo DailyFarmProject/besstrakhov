@@ -1,11 +1,11 @@
 import {useAppDispatch} from "../app/hooks.ts";
-import {setToken} from "../features/user/userSlice.ts";
+import {setAuthentication} from "../features/user/userSlice.ts";
 
 
 const LogOut = () => {
     const dispatch=useAppDispatch();
     const handleClick=()=>{
-        dispatch(setToken(false))
+        dispatch(setAuthentication(false))
     }
 
     return (

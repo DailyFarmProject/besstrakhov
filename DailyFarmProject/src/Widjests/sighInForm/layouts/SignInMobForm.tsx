@@ -1,11 +1,11 @@
 import {useState} from "react";
 import {motion} from "framer-motion";
 import {animationsProps} from "../../../features/const.ts";
-import PersonalDate from "../dataForm/PersonalDate.tsx";
-import CountryDate from "../dataForm/CountryDate.tsx";
-import CompanyDate from "../dataForm/CompanyDate.tsx";
-import LoginDate from "../dataForm/LoginDate.tsx";
-import Confirmation from "../dataForm/Confirmation.tsx";
+import PersonalDate from "../dataFormMob/PersonalDate.tsx";
+import CountryDate from "../dataFormMob/CountryDate.tsx";
+import CompanyDate from "../dataFormMob/CompanyDate.tsx";
+import LoginDate from "../dataFormMob/LoginDate.tsx";
+import Confirmation from "../dataFormMob/Confirmation.tsx";
 
 
 const SignInMobForm = () => {

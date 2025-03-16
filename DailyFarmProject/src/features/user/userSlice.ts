@@ -2,22 +2,22 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 
 
 interface userSlice {
-    token: boolean;
+    isAuthentication: boolean;
 }
 
 const initialState: userSlice= {
-    token: false,
+    isAuthentication: false,
 }
 
 export const userSlice = createSlice({
     name:'user',
     initialState,
     reducers:{
-        setToken: (state, action: PayloadAction<boolean>) =>{
-            state.token = action.payload
+        setAuthentication: (state, action: PayloadAction<boolean>) =>{
+            state.isAuthentication = action.payload
         }
     }
 })
 
-export const {setToken} = userSlice.actions;
+export const {setAuthentication} = userSlice.actions;
 export default userSlice.reducer;
