@@ -2,7 +2,7 @@ import {MapContainer, TileLayer, Marker, useMap} from "react-leaflet";
 import {useEffect, useState} from "react";
 
 import {regDataType} from "../../../types";
-import {L} from "leaflet";
+import L from "leaflet";
 
 interface MoveMapProps{
     position: [number, number];
@@ -15,7 +15,8 @@ interface Props {
 
 const MyMapComponent = ({regData,setRegData}:Props) => {
     const [position, setPosition] = useState<[number, number]>([51.505, -0.09])
-    const [isdragging, setIsdragging] = useState<boolean>(false);
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+
 
 
     const buttonClick=()=>{
@@ -35,15 +36,15 @@ const MyMapComponent = ({regData,setRegData}:Props) => {
     const MoveMap = ({ position }:MoveMapProps) => {
         const map = useMap();
         useEffect(() => {
-            if(!isdragging){
+            if(!isDragging){
                 map.flyTo(position, map.getZoom(), { duration: 1.5 });
             }
-        }, [position,isdragging]);
+        }, [position,isDragging]);
         return null;
     };
 
 
-    const handleDrager = (e: L.LeafletEvent) => {
+    const handleDragger = (e: L.LeafletEvent) => {
         const marker = e.target;
         const newPosition: [number, number] = [marker.getLatLng().lat, marker.getLatLng().lng];
         setPosition(newPosition);
@@ -54,7 +55,7 @@ const MyMapComponent = ({regData,setRegData}:Props) => {
 
     }
     const dragStart=()=>{
-        setIsdragging(true)
+        setIsDragging(true)
     }
 
     // const dragEnd=()=>{
@@ -68,7 +69,6 @@ const MyMapComponent = ({regData,setRegData}:Props) => {
                         onClick={buttonClick}> Get your location</button>
             </div>
             <MapContainer
-                position={position}
                 center={position}
                 zoom={12}
                 scrollWheelZoom={true}
@@ -92,7 +92,7 @@ const MyMapComponent = ({regData,setRegData}:Props) => {
                         eventHandlers={{
                             dragstart: dragStart,
                             // dragend: dragEnd,
-                            dragend:handleDrager,
+                            dragend:handleDragger,
                         }}
 
 
